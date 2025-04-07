@@ -35,6 +35,7 @@ var listTasksCmd = &cobra.Command{
 	Short: "List tasks",
 	Run: func(cmd *cobra.Command, args []string) {
 		flags := cmd.Flags()
+
 		projectID, _ := flags.GetString("project")
 
 		tasks, err := repository.ListTasks(projectID)
@@ -48,10 +49,11 @@ var listTasksCmd = &cobra.Command{
 			fmt.Println("No tasks found.")
 			return
 		}
+		
 
-		fmt.Printf("\n%-36s  %-30s %-12s  %-6s\n", "TASK ID", "TITLE", "PROJECT", "STATUS")
+		fmt.Printf("\n%-36s  %-30s %-18s  %-6s\n", "TASK ID", "TITLE", "PROJECT", "STATUS")
 		// Reapest for every param + six for spaces
-		fmt.Println(strings.Repeat("-", 36+30+12+6+6))
+		fmt.Println(strings.Repeat("-", 36+30+18+6+6))
 
 		for _, t := range tasks {
 			// coloring by using git shell coloring 
@@ -59,7 +61,7 @@ var listTasksCmd = &cobra.Command{
 			if t.Done {
 				status = "\033[32mDONE\033[0m"
 			}
-			fmt.Printf("%-36s  %-30s %-12s %-6s\n", t.ID, t.Title, t.ProjectID, status)
+			fmt.Printf("%-36s  %-30s %-18s %-6s\n", t.ID, t.Title, t.ProjectID, status)
 		}
 		fmt.Println()
 	},

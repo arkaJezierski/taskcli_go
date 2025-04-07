@@ -44,7 +44,7 @@ var getProjectCmd = &cobra.Command{
 			fmt.Println("Project not found")
 			return
 		}
-		fmt.Printf("📝 ID: %s\n📛 Name: %s\n", p.ID, p.Name)
+		fmt.Printf("ID: %s\nName: %s\n", p.ID, p.Name)
 	},
 }
 
@@ -88,11 +88,11 @@ var listProjectsCmd = &cobra.Command{
 			return
 		}
 		
-		fmt.Printf("\n%-36s  %-30s\n", "PROJECT", "TITLE")
+		fmt.Printf("\n%-36s | %-30s\n", "PROJECT", "TITLE")
 		fmt.Println(strings.Repeat("-", 78))
 		
 		for _, p := range projects {
-			fmt.Printf("%-36s  %-30s\n", p.ID, p.Name)
+			fmt.Printf("%-36s | %-30s\n", p.ID, p.Name)
 		}
 		fmt.Printf("\n")
 	},
