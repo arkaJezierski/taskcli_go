@@ -17,7 +17,7 @@ var taskCmd = &cobra.Command{
 }
 
 var creareTaskCmd = &cobra.Command{
-	Use:   "create [project_id] [title]",
+	Use:   "create [project_id|project_name] [title]",
 	Short: "Create a task in a project",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
